@@ -1,0 +1,23 @@
+{
+  "type": "template",
+  "altText": "this is a buttons template",
+  "template": {
+    "type": "buttons",
+    "title": "換圖文選單",
+    "text": "文字",
+    "actions": [
+      {
+        "type": "postback",
+        "label": "換圖文選單一",
+        "text": "動作 1",
+        "data": "menu=rich_menu_1"
+      },
+      {
+        "type": "postback",
+        "label": "換圖文選單二",
+        "text": "動作 2",
+        "data": "menu=rich_menu_2"
+      }
+    ]
+  }
+}
