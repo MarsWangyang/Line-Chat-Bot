@@ -1,0 +1,37 @@
+{
+  "type": "template",
+  "altText": "this is a buttons template",
+  "template": {
+    "type": "buttons",
+    "thumbnailImageUrl": "https://i1.kknews.cc/SIG=11jbp5h/3o0o00018ppqro8p05s6.jpg",
+    "imageSize": "contain",
+    "imageBackgroundColor": "#0C0C0C",
+    "text": "請選擇食物風格",
+    "actions": [
+      {
+        "type": "postback",
+        "label": "中式",
+        "text": "中式",
+        "data": "FoodType=中式"
+      },
+      {
+        "type": "postback",
+        "label": "西式",
+        "text": "西式",
+        "data": "FoodType=西式"
+      },
+      {
+        "type": "postback",
+        "label": "日式",
+        "text": "日式",
+        "data": "FoodType=日式"
+      },
+      {
+        "type": "postback",
+        "label": "義式",
+        "text": "義式",
+        "data": "FoodType=義式"
+      }
+    ]
+  }
+}

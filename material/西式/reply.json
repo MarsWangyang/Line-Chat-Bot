@@ -1,0 +1,37 @@
+{
+  "type": "template",
+  "altText": "You have a new message",
+  "template": {
+    "type": "buttons",
+    "thumbnailImageUrl": "https://memeprod.sgp1.digitaloceanspaces.com/meme/b9e96e4f4ba2ded5bccbfb519498cd38.png",
+    "imageSize": "contain",
+    "imageBackgroundColor": "#000000",
+    "text": "你想吃的價位區間",
+    "actions": [
+      {
+        "type": "postback",
+        "label": "0~100元",
+        "text": "0~100元",
+        "data": "Price=50~100$"
+      },
+      {
+        "type": "postback",
+        "label": "100~150元",
+        "text": "100~150元",
+        "data": "Price=100~150$"
+      },
+      {
+        "type": "postback",
+        "label": "150~200元",
+        "text": "150~200元",
+        "data": "Price=150~200$"
+      },
+      {
+        "type": "postback",
+        "label": "200元以上",
+        "text": "200元以上",
+        "data": "Price=250$以上"
+      }
+    ]
+  }
+}

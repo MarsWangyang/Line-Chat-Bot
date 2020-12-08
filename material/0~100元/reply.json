@@ -1,0 +1,32 @@
+{
+  "type": "template",
+  "altText": "You have a new message",
+  "template": {
+    "type": "buttons",
+    "thumbnailImageUrl": "https://www.smartm.com.tw/data/Images/4e/ff/c0/8c/87166d106cce887a910a0ba.jpg",
+    "imageSize": "contain",
+    "imageBackgroundColor": "#000000",
+    "title": "0~100元",
+    "text": "你的位置",
+    "actions": [
+      {
+        "type": "postback",
+        "label": "宵夜街",
+        "text": "宵夜街",
+        "data": "Location=宵夜街"
+      },
+      {
+        "type": "postback",
+        "label": "後門",
+        "text": "後門",
+        "data": "Location=後門"
+      },
+      {
+        "type": "postback",
+        "label": "校內",
+        "text": "校內",
+        "data": "Location=校內"
+      }
+    ]
+  }
+}

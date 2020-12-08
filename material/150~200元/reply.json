@@ -1,0 +1,32 @@
+{
+  "type": "template",
+  "altText": "You have new message.",
+  "template": {
+    "type": "buttons",
+    "thumbnailImageUrl": "https://www.ikea.com.tw/dairyfarm/tw/images/123/0712367_PE728786_S4.jpg",
+    "imageSize": "contain",
+    "imageBackgroundColor": "#000000",
+    "title": "150~200元",
+    "text": "你的位置",
+    "actions": [
+      {
+        "type": "postback",
+        "label": "宵夜街",
+        "text": "宵夜街",
+        "data": "menu=rich_menu_loc_street&tags=locations"
+      },
+      {
+        "type": "postback",
+        "label": "後門",
+        "text": "後門",
+        "data": "menu=rich_menu_loc_backdoor&tags=locations"
+      },
+      {
+        "type": "postback",
+        "label": "校內",
+        "text": "校內",
+        "data": "Location=校內"
+      }
+    ]
+  }
+}

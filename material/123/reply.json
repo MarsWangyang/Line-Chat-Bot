@@ -1,6 +1,6 @@
 {
   "type": "template",
-  "altText": "this is a buttons template",
+  "altText": "You have new message.",
   "template": {
     "type": "buttons",
     "title": "換圖文選單",
