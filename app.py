@@ -18,8 +18,8 @@ from urllib.parse import parse_qs
 from linebot.models import RichMenu
 
 app = Flask(__name__)
-line_bot_api = LineBotApi('ukIUk5jb/5/c8pwJ/ZfjM79eNK9YaEZ0VWQMf5GpmKmhqnWTXABLxZqJOlvdw8v0BZtKcfGC0URkSCK215UzJmyQFHJ6/rgnlb3Kp5Z0QG2SlPHoSZjWAf82YOh88ChSLPPfPWYuSMIoQ8M1r0W+4gdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('d077ff15d7b1005f7778d8175a6e4df9')
+line_bot_api = LineBotApi('YOUR_CHANNEL_ACCESS_TOKEN')
+handler = WebhookHandler('YOUR_CHANNEL_SECRET')
 
 
 # 監聽所有來自 /callback 的 Post Request
@@ -111,7 +111,7 @@ def process_postback_event(event):
     print(query_string_dict)
 
     if 'menu' in query_string_dict:
-        replyJsonPath = query_string_dict.get('menu')[0]  #'rich_menu_2'
+        replyJsonPath = query_string_dict.get('menu')[0]  #'rich_menu_'
         linkRichMenuId = query_string_dict.get('menu')[0]
 
         # 開啟檔案，轉成json
@@ -160,9 +160,6 @@ def process_postback_event(event):
     elif 'Location' in query_string_dict:
         dict['Location'] = query_string_dict.get('Location')[0]
 
-    with open('database_dict.pickle', 'wb') as file:
-        pickle.dump(dict, file)
-        print(dict)
 
 
 
