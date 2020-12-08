@@ -1,4 +1,5 @@
 from flask import Flask, request, abort
+import pickle
 
 from linebot import(
     LineBotApi, WebhookHandler
@@ -17,7 +18,6 @@ from urllib.parse import parse_qs
 from linebot.models import RichMenu
 
 app = Flask(__name__)
-
 line_bot_api = LineBotApi('ukIUk5jb/5/c8pwJ/ZfjM79eNK9YaEZ0VWQMf5GpmKmhqnWTXABLxZqJOlvdw8v0BZtKcfGC0URkSCK215UzJmyQFHJ6/rgnlb3Kp5Z0QG2SlPHoSZjWAf82YOh88ChSLPPfPWYuSMIoQ8M1r0W+4gdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('d077ff15d7b1005f7778d8175a6e4df9')
 
@@ -78,12 +78,18 @@ def detect_from_follower(fileName):
         returnArr.append(VideoSendMessage.new_from_json_dict(json_arr))
     return returnArr
 
-
 # 處理關注
-#@handler.add(FollowEvent)
-#def process_follow_event(event):
-#    return 0
+@handler.add(FollowEvent)
+def process_follow_event(event):
+    reply_arr = []
+    replyJsonPath = 'Follow'
+    reply_arr = detect_from_follower(replyJsonPath)
 
+    # 消息發送
+    line_bot_api.reply_message(
+        event.reply_token,
+        reply_arr
+    )
 
 # 處理文字訊息
 @handler.add(MessageEvent, message=TextMessage)
@@ -92,11 +98,13 @@ def process_text_message(event):
     message_array = detect_from_follower(replyJsonPath)
     line_bot_api.reply_message(event.reply_token, message_array)
 
+
 #用戶發PostbackEvent時，若指定menu=xxx，則可更換menu
 #若menu欄位有值，則：
 #讀取其rich_menu_id，並取得用戶id，將用戶與選單綁定
 #讀取其reply.json，轉譯成消息，並發送
 
+dict = {}
 @handler.add(PostbackEvent)
 def process_postback_event(event):
     query_string_dict = parse_qs(event.postback.data)
@@ -142,6 +150,20 @@ def process_postback_event(event):
             event.reply_token,
             result_message_array
         )
+
+    elif 'FoodType' in query_string_dict:
+        dict['FoodType'] = query_string_dict.get('FoodType')[0]
+
+    elif 'Price' in query_string_dict:
+        dict['Price'] = query_string_dict.get('Price')[0]
+
+    elif 'Location' in query_string_dict:
+        dict['Location'] = query_string_dict.get('Location')[0]
+
+    with open('database_dict.pickle', 'wb') as file:
+        pickle.dump(dict, file)
+        print(dict)
+
 
 
 import os
