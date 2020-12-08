@@ -3,7 +3,7 @@ import json
 from linebot.models import RichMenu
 from linebot import LineBotApi
 
-line_bot_api = LineBotApi('ukIUk5jb/5/c8pwJ/ZfjM79eNK9YaEZ0VWQMf5GpmKmhqnWTXABLxZqJOlvdw8v0BZtKcfGC0URkSCK215UzJmyQFHJ6/rgnlb3Kp5Z0QG2SlPHoSZjWAf82YOh88ChSLPPfPWYuSMIoQ8M1r0W+4gdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('YOUR_CHANNEL_ACCESS_TOKEN')
 
 reply_root = ''
 curr_path = os.getcwd()
