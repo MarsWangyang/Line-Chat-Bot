@@ -1,0 +1,89 @@
+{
+  "size": {
+    "width": 2500,
+    "height": 1686
+  },
+  "selected": true,
+  "name": "OpenTime",
+  "chatBarText": "營業時間",
+  "areas": [
+    {
+      "bounds": {
+        "x": 2203,
+        "y": 21,
+        "width": 272,
+        "height": 342
+      },
+      "action": {
+        "type": "postback",
+        "text": "回首頁",
+        "data": "action=home"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1935,
+        "y": 29,
+        "width": 247,
+        "height": 338
+      },
+      "action": {
+        "type": "postback",
+        "text": "上一頁",
+        "data": "action=return"
+      }
+    },
+    {
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 969,
+        "height": 875
+      },
+      "action": {
+        "type": "postback",
+        "text": "早餐",
+        "data": "opentime=早上"
+      }
+    },
+    {
+      "bounds": {
+        "x": 965,
+        "y": 0,
+        "width": 933,
+        "height": 875
+      },
+      "action": {
+        "type": "postback",
+        "text": "午餐",
+        "data": "opentime=中午"
+      }
+    },
+    {
+      "bounds": {
+        "x": 0,
+        "y": 879,
+        "width": 965,
+        "height": 807
+      },
+      "action": {
+        "type": "postback",
+        "text": "晚餐",
+        "data": "opentime=晚上"
+      }
+    },
+    {
+      "bounds": {
+        "x": 965,
+        "y": 875,
+        "width": 936,
+        "height": 811
+      },
+      "action": {
+        "type": "postback",
+        "text": "宵夜",
+        "data": "opentime=宵夜"
+      }
+    }
+  ]
+}

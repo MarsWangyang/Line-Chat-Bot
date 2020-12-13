@@ -1,0 +1,89 @@
+{
+  "size": {
+    "width": 2500,
+    "height": 1686
+  },
+  "selected": true,
+  "name": "FoodType",
+  "chatBarText": "你好啊～",
+  "areas": [
+    {
+      "bounds": {
+        "x": 4,
+        "y": 384,
+        "width": 1271,
+        "height": 647
+      },
+      "action": {
+        "type": "postback",
+        "text": "日式",
+        "data": "foodtype=日式"
+      }
+    },
+    {
+      "bounds": {
+        "x": 0,
+        "y": 1031,
+        "width": 1275,
+        "height": 655
+      },
+      "action": {
+        "type": "postback",
+        "text": "西式",
+        "data": "foodtype=西式"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1271,
+        "y": 1027,
+        "width": 1229,
+        "height": 659
+      },
+      "action": {
+        "type": "postback",
+        "text": "中式",
+        "data": "foodtype=中式"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1275,
+        "y": 380,
+        "width": 1225,
+        "height": 647
+      },
+      "action": {
+        "type": "postback",
+        "text": "義式",
+        "data": "foodtype=義式"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1922,
+        "y": 41,
+        "width": 260,
+        "height": 318
+      },
+      "action": {
+        "type": "postback",
+        "text": "上一頁",
+        "data": "action=return"
+      }
+    },
+    {
+      "bounds": {
+        "x": 2199,
+        "y": 25,
+        "width": 280,
+        "height": 330
+      },
+      "action": {
+        "type": "postback",
+        "text": "回首頁",
+        "data": "action=Home"
+      }
+    }
+  ]
+}
