@@ -1,0 +1,50 @@
+{
+  "size": {
+    "width": 2500,
+    "height": 1686
+  },
+  "selected": true,
+  "name": "功能",
+  "chatBarText": "功能",
+  "areas": [
+    {
+      "bounds": {
+        "x": 0,
+        "y": 817,
+        "width": 859,
+        "height": 869
+      },
+      "action": {
+        "type": "postback",
+        "text": "我要填回饋單！",
+        "data": "action=feedback"
+      }
+    },
+    {
+      "bounds": {
+        "x": 858,
+        "y": 817,
+        "width": 813,
+        "height": 869
+      },
+      "action": {
+        "type": "postback",
+        "text": "我要吃飯",
+        "data": "menu=rich_menu_opentime"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1671,
+        "y": 812,
+        "width": 829,
+        "height": 874
+      },
+      "action": {
+        "type": "postback",
+        "text": "我想訂水果！",
+        "data": "menu=rich_menu_fruit"
+      }
+    }
+  ]
+}

@@ -5,7 +5,7 @@
   },
   "selected": true,
   "name": "FoodType",
-  "chatBarText": "你好啊～",
+  "chatBarText": "食物風格",
   "areas": [
     {
       "bounds": {
@@ -17,7 +17,7 @@
       "action": {
         "type": "postback",
         "text": "日式",
-        "data": "foodtype=日式"
+        "data": "menu=rich_menu_"
       }
     },
     {
@@ -30,7 +30,7 @@
       "action": {
         "type": "postback",
         "text": "西式",
-        "data": "foodtype=西式"
+        "data": "menu=rich_menu_"
       }
     },
     {
@@ -43,7 +43,7 @@
       "action": {
         "type": "postback",
         "text": "中式",
-        "data": "foodtype=中式"
+        "data": "menu=rich_menu_"
       }
     },
     {
@@ -56,7 +56,7 @@
       "action": {
         "type": "postback",
         "text": "義式",
-        "data": "foodtype=義式"
+        "data": "menu=rich_menu_"
       }
     },
     {
@@ -69,7 +69,7 @@
       "action": {
         "type": "postback",
         "text": "上一頁",
-        "data": "action=return"
+        "data": "menu=rich_menu_opentime"
       }
     },
     {
@@ -82,7 +82,7 @@
       "action": {
         "type": "postback",
         "text": "回首頁",
-        "data": "action=Home"
+        "data": "menu=rich_menu_welcome"
       }
     }
   ]

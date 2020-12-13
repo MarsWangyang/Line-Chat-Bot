@@ -17,20 +17,20 @@
       "action": {
         "type": "postback",
         "text": "回首頁",
-        "data": "action=home"
+        "data": "menu=rich_menu_welcome"
       }
     },
     {
       "bounds": {
         "x": 1935,
-        "y": 29,
+        "y": 25,
         "width": 247,
-        "height": 338
+        "height": 342
       },
       "action": {
         "type": "postback",
         "text": "上一頁",
-        "data": "action=return"
+        "data": "menu=rich_menu_function"
       }
     },
     {
@@ -43,7 +43,7 @@
       "action": {
         "type": "postback",
         "text": "早餐",
-        "data": "opentime=早上"
+        "data": "menu=rich_menu_foodtype"
       }
     },
     {
@@ -56,7 +56,7 @@
       "action": {
         "type": "postback",
         "text": "午餐",
-        "data": "opentime=中午"
+        "data": "menu=rich_menu_foodtype"
       }
     },
     {
@@ -69,7 +69,7 @@
       "action": {
         "type": "postback",
         "text": "晚餐",
-        "data": "opentime=晚上"
+        "data": "menu=rich_menu_foodtype"
       }
     },
     {
@@ -82,7 +82,7 @@
       "action": {
         "type": "postback",
         "text": "宵夜",
-        "data": "opentime=宵夜"
+        "data": "menu=rich_menu_foodtype"
       }
     }
   ]
