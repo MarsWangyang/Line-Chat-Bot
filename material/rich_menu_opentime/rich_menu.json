@@ -43,7 +43,7 @@
       "action": {
         "type": "postback",
         "text": "早餐",
-        "data": "menu=rich_menu_foodtype"
+        "data": "menu=rich_menu_foodtypeOpentime=早上"
       }
     },
     {
@@ -56,7 +56,7 @@
       "action": {
         "type": "postback",
         "text": "午餐",
-        "data": "menu=rich_menu_foodtype"
+        "data": "menu=rich_menu_foodtype&Opentime=中午"
       }
     },
     {
@@ -69,7 +69,7 @@
       "action": {
         "type": "postback",
         "text": "晚餐",
-        "data": "menu=rich_menu_foodtype"
+        "data": "menu=rich_menu_foodtype&Opentime=晚餐"
       }
     },
     {
@@ -82,7 +82,7 @@
       "action": {
         "type": "postback",
         "text": "宵夜",
-        "data": "menu=rich_menu_foodtype"
+        "data": "menu=rich_menu_foodtype&Opentime=宵夜"
       }
     }
   ]

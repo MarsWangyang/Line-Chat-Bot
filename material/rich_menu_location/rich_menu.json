@@ -1,0 +1,76 @@
+{
+  "size": {
+    "width": 2500,
+    "height": 1686
+  },
+  "selected": true,
+  "name": "Location",
+  "chatBarText": "選擇地點",
+  "areas": [
+    {
+      "bounds": {
+        "x": 66,
+        "y": 375,
+        "width": 788,
+        "height": 1246
+      },
+      "action": {
+        "type": "postback",
+        "text": "後門",
+        "data": "menu=rich_menu_price&Location=後門"
+      }
+    },
+    {
+      "bounds": {
+        "x": 870,
+        "y": 367,
+        "width": 776,
+        "height": 1254
+      },
+      "action": {
+        "type": "postback",
+        "text": "校內",
+        "data": "menu=rich_menu_price&Location=校內"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1659,
+        "y": 393,
+        "width": 771,
+        "height": 1237
+      },
+      "action": {
+        "type": "postback",
+        "text": "宵夜街",
+        "data": "menu=rich_menu_price&Location=宵夜街"
+      }
+    },
+    {
+      "bounds": {
+        "x": 2211,
+        "y": 28,
+        "width": 276,
+        "height": 347
+      },
+      "action": {
+        "type": "postback",
+        "text": "回首頁",
+        "data": "menu=rich_menu_welcome"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1939,
+        "y": 29,
+        "width": 276,
+        "height": 346
+      },
+      "action": {
+        "type": "postback",
+        "text": "上一頁",
+        "data": "menu=rich_menu_foodtype"
+      }
+    }
+  ]
+}

@@ -4,46 +4,72 @@
     "height": 1686
   },
   "selected": true,
-  "name": "功能",
+  "name": "Function",
   "chatBarText": "功能",
   "areas": [
     {
       "bounds": {
-        "x": 0,
-        "y": 817,
-        "width": 859,
+        "x": 194,
+        "y": 0,
+        "width": 1016,
         "height": 869
       },
       "action": {
         "type": "postback",
-        "text": "我要填回饋單！",
+        "text": "找飯吃！",
+        "data": "menu=rich_menu_assign"
+      }
+    },
+    {
+      "bounds": {
+        "x": 194,
+        "y": 867,
+        "width": 1019,
+        "height": 819
+      },
+      "action": {
+        "type": "postback",
+        "text": "找水果！",
+        "data": "menu=rich_menu_fruit"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1209,
+        "y": 870,
+        "width": 1204,
+        "height": 816
+      },
+      "action": {
+        "type": "postback",
+        "text": "我要填回饋！",
         "data": "action=feedback"
       }
     },
     {
       "bounds": {
-        "x": 858,
-        "y": 817,
-        "width": 813,
-        "height": 869
+        "x": 1564,
+        "y": 50,
+        "width": 462,
+        "height": 470
       },
       "action": {
         "type": "postback",
-        "text": "我要吃飯",
-        "data": "menu=rich_menu_opentime"
+        "text": "回首頁",
+        "data": "menu=rich_menu_welcome"
       }
     },
     {
       "bounds": {
-        "x": 1671,
-        "y": 812,
-        "width": 829,
-        "height": 874
+        "x": 1514,
+        "y": 524,
+        "width": 558,
+        "height": 334
       },
       "action": {
         "type": "postback",
-        "text": "我想訂水果！",
-        "data": "menu=rich_menu_fruit"
+        "text": "上一頁",
+        "data": "menu=rich_menu_welcome"
       }
     }
   ]

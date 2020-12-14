@@ -1,0 +1,63 @@
+{
+  "size": {
+    "width": 2500,
+    "height": 1686
+  },
+  "selected": true,
+  "name": "Random/Assign",
+  "chatBarText": "隨意選或指定食物",
+  "areas": [
+    {
+      "bounds": {
+        "x": 1779,
+        "y": 342,
+        "width": 668,
+        "height": 581
+      },
+      "action": {
+        "type": "postback",
+        "text": "回首頁",
+        "data": "menu=rich_menu_welcome"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1762,
+        "y": 928,
+        "width": 680,
+        "height": 475
+      },
+      "action": {
+        "type": "postback",
+        "text": "上一頁",
+        "data": "menu=rich_menu_function"
+      }
+    },
+    {
+      "bounds": {
+        "x": 12,
+        "y": 363,
+        "width": 945,
+        "height": 1023
+      },
+      "action": {
+        "type": "postback",
+        "text": "我只想隨便找食物～",
+        "data": "action=random"
+      }
+    },
+    {
+      "bounds": {
+        "x": 978,
+        "y": 355,
+        "width": 775,
+        "height": 1044
+      },
+      "action": {
+        "type": "postback",
+        "text": "我想指定種類吃！",
+        "data": "menu=rich_menu_opentime"
+      }
+    }
+  ]
+}

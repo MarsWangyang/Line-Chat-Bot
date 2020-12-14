@@ -1,0 +1,115 @@
+{
+  "size": {
+    "width": 2500,
+    "height": 1686
+  },
+  "selected": true,
+  "name": "Price",
+  "chatBarText": "價格",
+  "areas": [
+    {
+      "bounds": {
+        "x": 26,
+        "y": 349,
+        "width": 783,
+        "height": 641
+      },
+      "action": {
+        "type": "postback",
+        "text": "0~50元",
+        "data": "Price=0~50$"
+      }
+    },
+    {
+      "bounds": {
+        "x": 809,
+        "y": 362,
+        "width": 779,
+        "height": 629
+      },
+      "action": {
+        "type": "postback",
+        "text": "50~100元",
+        "data": "Price=50~100$"
+      }
+    },
+    {
+      "bounds": {
+        "x": 30,
+        "y": 994,
+        "width": 774,
+        "height": 632
+      },
+      "action": {
+        "type": "postback",
+        "text": "150~200元",
+        "data": "action=150~200"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1583,
+        "y": 361,
+        "width": 866,
+        "height": 624
+      },
+      "action": {
+        "type": "postback",
+        "text": "100~150元",
+        "data": "Price=100~150$"
+      }
+    },
+    {
+      "bounds": {
+        "x": 809,
+        "y": 985,
+        "width": 775,
+        "height": 625
+      },
+      "action": {
+        "type": "postback",
+        "text": "200~250元",
+        "data": "Price=200~250$"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1571,
+        "y": 989,
+        "width": 882,
+        "height": 624
+      },
+      "action": {
+        "type": "postback",
+        "text": "250元以上",
+        "data": "Price=250$以上"
+      }
+    },
+    {
+      "bounds": {
+        "x": 2212,
+        "y": 21,
+        "width": 266,
+        "height": 332
+      },
+      "action": {
+        "type": "postback",
+        "text": "回首頁",
+        "data": "menu=rich_menu_welcome"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1919,
+        "y": 0,
+        "width": 297,
+        "height": 353
+      },
+      "action": {
+        "type": "postback",
+        "text": "上一頁",
+        "data": "menu=rich_menu_location"
+      }
+    }
+  ]
+}
