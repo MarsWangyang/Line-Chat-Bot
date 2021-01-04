@@ -7,7 +7,7 @@ DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a YOUR-PROJECT-NAME').r
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cursor = conn.cursor()
 
-search_query = """SELECT * FROM food"""
+search_query = """SELECT * FROM YOUR-TABLE"""
 cursor.execute(search_query)
 user_data = cursor.fetchall()
 #print(user_data)
