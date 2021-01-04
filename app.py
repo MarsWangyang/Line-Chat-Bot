@@ -1,12 +1,13 @@
 from flask import Flask, request, abort
-import pickle
 
-from linebot import(
+from linebot import (
     LineBotApi, WebhookHandler
 )
+
 from linebot.exceptions import (
     InvalidSignatureError
 )
+
 from linebot.models import *
 from linebot.models.template import *
 import json
@@ -14,12 +15,15 @@ import json
 from linebot.models import (
     PostbackEvent
 )
+
 from urllib.parse import parse_qs
+import copy
 from linebot.models import RichMenu
+import psycopg2
 
 app = Flask(__name__)
-line_bot_api = LineBotApi('YOUR_CHANNEL_ACCESS_TOKEN')
-handler = WebhookHandler('YOUR_CHANNEL_SECRET')
+line_bot_api = LineBotApi('ukIUk5jb/5/c8pwJ/ZfjM79eNK9YaEZ0VWQMf5GpmKmhqnWTXABLxZqJOlvdw8v0BZtKcfGC0URkSCK215UzJmyQFHJ6/rgnlb3Kp5Z0QG2SlPHoSZjWAf82YOh88ChSLPPfPWYuSMIoQ8M1r0W+4gdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('d077ff15d7b1005f7778d8175a6e4df9')
 
 
 # 監聽所有來自 /callback 的 Post Request
@@ -38,16 +42,21 @@ def callback():
     return 'OK'
 
 def detect_from_follower(fileName):
-
-    #open material file to transform to json
-    reply_root = '' #final location
-    reply_path = '' #dir
+    # open material file to transform to json
+    reply_root = ''  # final location
+    reply_path = ''  # dir
     curr_path = os.getcwd()
     Textreply_folder = os.path.join(curr_path, 'material')
     reply_folders = os.listdir(Textreply_folder)
     for folder in reply_folders:
         if folder == fileName:
             reply_path = os.path.join(Textreply_folder, folder)
+        else:
+            #如果沒有在material資料夾，就用英文機器人回覆
+            return []
+            break
+
+    #開啟material資料夾後的解析json
     for file in os.listdir(reply_path):
         if file == 'reply.json':
             reply_root = os.path.join(reply_path, file)
@@ -78,6 +87,7 @@ def detect_from_follower(fileName):
         returnArr.append(VideoSendMessage.new_from_json_dict(json_arr))
     return returnArr
 
+
 # 處理關注
 @handler.add(FollowEvent)
 def process_follow_event(event):
@@ -91,27 +101,124 @@ def process_follow_event(event):
         reply_arr
     )
 
+from chatbot import chat
 # 處理文字訊息
 @handler.add(MessageEvent, message=TextMessage)
 def process_text_message(event):
     replyJsonPath = event.message.text
-    message_array = detect_from_follower(replyJsonPath)
-    line_bot_api.reply_message(event.reply_token, message_array)
+    if detect_from_follower(replyJsonPath):
+        message_array = detect_from_follower(replyJsonPath)
+        line_bot_api.reply_message(event.reply_token, message_array)
+    else:
+        message_array = chat(replyJsonPath)
+        print(message_array)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(message_array))
 
+# 用戶發PostbackEvent時，若指定menu=xxx，則可更換menu
+# 若menu欄位有值，則：
+# 讀取其rich_menu_id，並取得用戶id，將用戶與選單綁定
+# 讀取其reply.json，轉譯成消息，並發送
+from insert_context_postgre import insert_user_data
+from search_food_postgre import search_data_query
+from create_carousel import carousel_food
+from random_food import random_search
 
-#用戶發PostbackEvent時，若指定menu=xxx，則可更換menu
-#若menu欄位有值，則：
-#讀取其rich_menu_id，並取得用戶id，將用戶與選單綁定
-#讀取其reply.json，轉譯成消息，並發送
-
-dict = {}
 @handler.add(PostbackEvent)
 def process_postback_event(event):
     query_string_dict = parse_qs(event.postback.data)
     print(query_string_dict)
 
+    print(event.source.user_id)
+    if 'FoodType' in query_string_dict:
+        FoodType_postback = query_string_dict.get('FoodType')[0]
+        insert_user_data('FoodType', FoodType_postback, event.source.user_id)
+        print('good')
+
+    if 'Price' in query_string_dict:
+        Price_postback = query_string_dict.get('Price')[0]
+        insert_user_data('Price', Price_postback, event.source.user_id)
+        print('okkk')
+
+    if 'Location' in query_string_dict:
+        Location_postback = query_string_dict.get('Location')[0]
+        insert_user_data('Location', Location_postback, event.source.user_id)
+
+    if 'OpenTime' in query_string_dict:
+        OpenTime_postback = query_string_dict.get('OpenTime')[0]
+        insert_user_data('OpenTime', OpenTime_postback, event.source.user_id)
+
+    if 'Kind' in query_string_dict:
+        Kind_postback = query_string_dict.get('Kind')[0]
+        insert_user_data('Kind', Kind_postback, event.source.user_id)
+
+    if 'check' in query_string_dict:
+        check_postback = query_string_dict.get('check')[0]
+        if check_postback == 'Checkdata':
+            message_array = detect_from_follower(check_postback)
+            line_bot_api.reply_message(event.reply_token, message_array)
+
+    if 'query' in query_string_dict:
+        query_postback = query_string_dict.get('query')[0]
+        if query_postback == 'yes':
+            results = search_data_query(event.source.user_id)
+            if results:
+                template_carousel = {
+                                    "type": "flex",
+                                    "altText": "You have a new message!",
+                                    "contents": {
+                                        "type": "carousel",
+                                        "contents": []
+                                    }
+                }
+
+                for shop in results:
+                    name = shop[0]
+                    #print(name)
+                    message_array = carousel_food(name)
+                    #print(message_array)
+                    #print('-'*30)
+                    temp = copy.deepcopy(message_array)
+                    template_carousel['contents']['contents'].append(temp)
+                message_array = FlexSendMessage.new_from_json_dict(template_carousel)
+                #print(message_array)
+                line_bot_api.reply_message(event.reply_token, message_array)
+            else:
+                results = 'no_results'
+                message_array = detect_from_follower(results)
+                line_bot_api.reply_message(event.reply_token, message_array)
+
+    if 'action' in query_string_dict:
+        query_action = query_string_dict.get('action')[0]
+        if query_action == 'feedback':
+            message_array = detect_from_follower(query_action)
+            line_bot_api.reply_message(event.reply_token, message_array)
+        if query_action == 'random':
+            number = 5
+            results = random_search(number)
+            template_carousel = {
+                "type": "flex",
+                "altText": "You have a new message!",
+                "contents": {
+                    "type": "carousel",
+                    "contents": []
+                }
+            }
+
+            for shop in results:
+                name = shop[0]
+                # print(name)
+                message_array = carousel_food(name)
+                # print(message_array)
+                # print('-'*30)
+                temp = copy.deepcopy(message_array)
+                template_carousel['contents']['contents'].append(temp)
+            message_array = FlexSendMessage.new_from_json_dict(template_carousel)
+            # print(message_array)
+            line_bot_api.reply_message(event.reply_token, message_array)
+
+    print('--------------check----------------')
     if 'menu' in query_string_dict:
-        replyJsonPath = query_string_dict.get('menu')[0]  #'rich_menu_'
+        replyJsonPath = query_string_dict.get('menu')[0]  # 'rich_menu_2'
         linkRichMenuId = query_string_dict.get('menu')[0]
 
         # 開啟檔案，轉成json
@@ -133,6 +240,7 @@ def process_postback_event(event):
             linkRichMenuId = f.readline()
         print(linkRichMenuId)
         print(replyJsonPath)
+
         # 綁定圖文選單
         line_bot_api.link_rich_menu_to_user(event.source.user_id, linkRichMenuId)
 
@@ -151,19 +259,8 @@ def process_postback_event(event):
             result_message_array
         )
 
-    elif 'FoodType' in query_string_dict:
-        dict['FoodType'] = query_string_dict.get('FoodType')[0]
-
-    elif 'Price' in query_string_dict:
-        dict['Price'] = query_string_dict.get('Price')[0]
-
-    elif 'Location' in query_string_dict:
-        dict['Location'] = query_string_dict.get('Location')[0]
-
-
-
-
 import os
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
