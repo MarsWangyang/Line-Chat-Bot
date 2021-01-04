@@ -22,8 +22,8 @@ from linebot.models import RichMenu
 import psycopg2
 
 app = Flask(__name__)
-line_bot_api = LineBotApi('ukIUk5jb/5/c8pwJ/ZfjM79eNK9YaEZ0VWQMf5GpmKmhqnWTXABLxZqJOlvdw8v0BZtKcfGC0URkSCK215UzJmyQFHJ6/rgnlb3Kp5Z0QG2SlPHoSZjWAf82YOh88ChSLPPfPWYuSMIoQ8M1r0W+4gdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('d077ff15d7b1005f7778d8175a6e4df9')
+line_bot_api = LineBotApi('xxxxxxx')
+handler = WebhookHandler('xxxxxxx')
 
 
 # 監聽所有來自 /callback 的 Post Request
@@ -162,6 +162,7 @@ def process_postback_event(event):
         if query_postback == 'yes':
             results = search_data_query(event.source.user_id)
             if results:
+                #carousel template
                 template_carousel = {
                                     "type": "flex",
                                     "altText": "You have a new message!",
