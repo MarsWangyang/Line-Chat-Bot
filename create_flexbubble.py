@@ -3,7 +3,7 @@ import json
 import psycopg2
 
 
-DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a ncu-food').read()[:-1]
+DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a YOUR-PROJECT-NAME').read()[:-1]
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cursor = conn.cursor()
 
