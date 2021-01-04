@@ -1,6 +1,6 @@
 import csv, sqlite3
 
-con = sqlite3.connect("ncufood.db") # change to 'sqlite:///your_filename.db'
+con = sqlite3.connect("ncufood.db")
 cur = con.cursor()
 cur.execute("CREATE TABLE IF NOT EXISTS food_table ('ResturantName', 'Kind','Holiday','Price','Location','OpenTime','Menu','FoodType');") # use your column names here
 
